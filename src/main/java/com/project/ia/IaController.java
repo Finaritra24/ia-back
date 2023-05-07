@@ -2,7 +2,6 @@ package com.project.ia;
 
 import org.springframework.http.HttpHeaders;
 
-import java.io.File;
 import java.util.Base64;
 import java.util.Map;
 import java.util.Vector;
@@ -33,7 +32,7 @@ public class IaController {
     //administrateur
 
     @GetMapping("/listadmin")
-    public Vector<Administrateur>  listAdmin() throws Exception{
+    public  Vector<Administrateur>  listAdmin() throws Exception{
         Vector<Administrateur> list=new ServAdmin().listAdmin();
         return list;
     }
