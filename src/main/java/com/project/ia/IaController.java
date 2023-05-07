@@ -87,9 +87,11 @@ public class IaController {
     }
     @RequestMapping(value = "/deletePub", method = RequestMethod.POST)
     @ResponseBody
-    public void deleteProduct(@RequestBody Publication publication, HttpServletResponse response) {
+    public void deleteProduct(@RequestBody Map<String, String> id, HttpServletResponse response) {
+        String identif = id.get("id");
         try {
-            Publication p = new Publication(publication.getIdPublication());
+            Publication p = new Publication();
+            p.setIdPublication(identif);
             p.delete(null);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
