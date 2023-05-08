@@ -9,28 +9,31 @@ public class Publication extends DBTable {
     private String datepub;
     private String descript;
     private String imagePub;
+    private String extimg;
 
 
     public String getNameAuto(){
         return "PUB";
     }
     // Constructeur avec idPublication
-    public Publication(String idPublication, String idAdministrateur, String nom,String datepub, String descript,String imagePub) {
+    public Publication(String idPublication, String idAdministrateur, String nom,String datepub, String descript,String imagePub,String extimg) {
         this.idPublication = idPublication;
         this.idAdministrateur = idAdministrateur;
         this.nom=nom;
         this.datepub = datepub;
         this.descript = descript;
         this.imagePub=imagePub;
+        this.extimg=extimg;
     }
 
     // Constructeur sans idPublication
-    public Publication(String idAdministrateur,String nom, String datepub, String descript,String imagePub) {
+    public Publication(String idAdministrateur,String nom, String datepub, String descript,String imagePub,String extimg) {
         this.idAdministrateur = idAdministrateur;
         this.nom=nom;
         this.datepub = datepub;
         this.descript = descript;
         this.imagePub=imagePub;
+        this.extimg=extimg;
     }
 
     // Constructeur vide
@@ -88,6 +91,13 @@ public class Publication extends DBTable {
     public String getSeqName() {
         return "spublication";
     }
+	public String getExtimg() {
+		return this.extimg;
+	}
+
+	public void setExtimg(String extimg) {
+		this.extimg = extimg;
+	}
 
     // Méthode toString()
     @Override
@@ -98,6 +108,7 @@ public class Publication extends DBTable {
                 ", nom='" + nom + '\'' +
                 ", datepub=" + datepub +
                 ", descript='" + descript + '\'' +
+                ", extimg='" + extimg + '\'' +
                 '}';
     }
 }

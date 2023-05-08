@@ -68,12 +68,14 @@ public class IaController {
         // String description=pubData.get("description");
         // String uniqueFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
         // File destination = new File(System.getProperty("user.dir") + "/image", uniqueFilename);
+        String fileName = file.getOriginalFilename();
+        String extension = fileName.substring(fileName.lastIndexOf("."));
 
         try {
              // Transférer le fichier dans l'emplacement de destination
             byte[] imageBytes = file.getBytes();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-            new ServPublication().ajoutPub(nom,description,base64Image,id);
+            new ServPublication().ajoutPub(nom,description,base64Image,extension,id);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
             // TODO Auto-generated catch block
