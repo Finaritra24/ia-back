@@ -86,17 +86,17 @@ public class IaController {
             e.printStackTrace();
         }
     }
-    @RequestMapping(value = "/deletePub", method = RequestMethod.POST)
-    @ResponseBody
-    public void deleteProduct(@RequestBody String id, HttpServletResponse response) {
-        try {
-            Publication p = new Publication(id);
-            p.delete(null);
-            response.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception e) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        }
-    }
+    // @RequestMapping(value = "/deletePub", method = RequestMethod.POST)
+    // @ResponseBody
+    // public void deleteProduct(@RequestBody String id, HttpServletResponse response) {
+    //     try {
+    //         Publication p = new Publication(id);
+    //         p.delete(null);
+    //         response.setStatus(HttpServletResponse.SC_OK);
+    //     } catch (Exception e) {
+    //         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+    //     }
+    // }
 
 
     @GetMapping("/listPub")
