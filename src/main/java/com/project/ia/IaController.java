@@ -57,7 +57,7 @@ public class IaController {
 
     //publication
 
-    @PostMapping(value = "/ajoutPub")
+    @PostMapping(value = "/ajoutPub", consumes = { "multipart/form-data" })
     public void ajouterPub(@RequestParam("nom") String nom,
     @RequestParam("description") String description,
     @RequestParam("file") MultipartFile file,
@@ -71,9 +71,10 @@ public class IaController {
 
         try {
              // Transférer le fichier dans l'emplacement de destination
-            byte[] imageBytes = file.getBytes();
-            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-            new ServPublication().ajoutPub(nom,description,base64Image,id);
+            // byte[] imageBytes = file.getBytes();
+            // String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            String test="test";
+            new ServPublication().ajoutPub(nom,description,test,id);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
             // TODO Auto-generated catch block
