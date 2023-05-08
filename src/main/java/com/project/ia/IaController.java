@@ -57,7 +57,7 @@ public class IaController {
 
     //publication
 
-    @PostMapping(value = "/ajoutPub", consumes = { "multipart/form-data" })
+    @PostMapping(value = "/ajoutPub")
     public void ajouterPub(@RequestParam("nom") String nom,
     @RequestParam("description") String description,
     @RequestParam("file") MultipartFile file,
