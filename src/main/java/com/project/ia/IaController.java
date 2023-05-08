@@ -71,10 +71,9 @@ public class IaController {
 
         try {
              // Transférer le fichier dans l'emplacement de destination
-            // byte[] imageBytes = file.getBytes();
-            // String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-            String test="test";
-            new ServPublication().ajoutPub(nom,description,test,id);
+            byte[] imageBytes = file.getBytes();
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            new ServPublication().ajoutPub(nom,description,base64Image,id);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
             // TODO Auto-generated catch block
