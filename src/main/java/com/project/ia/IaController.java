@@ -86,7 +86,7 @@ public class IaController {
             e.printStackTrace();
         }
     }
-    @RequestMapping(value = "/deletePub/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deletePub", method = RequestMethod.DELETE)
     @ResponseBody
     public void deleteProduct(@PathVariable("id") String id,HttpServletResponse response) {
         try {
