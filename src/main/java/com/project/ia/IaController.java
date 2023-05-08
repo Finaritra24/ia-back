@@ -66,7 +66,7 @@ public class IaController {
         // String nom=pubData.get("nom");
         // String description=pubData.get("description");
         String uniqueFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        File destination = new File("D:/Matiere/S6/mr Rojo/projet/projet/IA/image", uniqueFilename);
+        File destination = new File(System.getProperty("user.dir") + "/image", uniqueFilename);
         try {
              // Transférer le fichier dans l'emplacement de destination
              file.transferTo(destination);
