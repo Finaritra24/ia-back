@@ -3,6 +3,7 @@ package com.project.ia;
 import org.springframework.http.HttpHeaders;
 
 import java.io.File;
+import java.util.Base64;
 import java.util.Map;
 import java.util.Vector;
 import org.springframework.web.multipart.MultipartFile;
@@ -65,12 +66,14 @@ public class IaController {
         // String id=pubData.get("id");
         // String nom=pubData.get("nom");
         // String description=pubData.get("description");
-        String uniqueFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        File destination = new File(System.getProperty("user.dir") + "/image", uniqueFilename);
+        // String uniqueFilename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+        // File destination = new File(System.getProperty("user.dir") + "/image", uniqueFilename);
+
         try {
              // Transférer le fichier dans l'emplacement de destination
-             file.transferTo(destination);
-            new ServPublication().ajoutPub(nom,description,uniqueFilename,id);
+            byte[] imageBytes = file.getBytes();
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            new ServPublication().ajoutPub(nom,description,base64Image,id);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
             // TODO Auto-generated catch block
