@@ -8,10 +8,7 @@ import java.util.Map;
 import java.util.Vector;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.PathVariable;
+// import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -64,7 +61,6 @@ public class IaController {
     public void ajouterPub(@RequestParam("nom") String nom,
     @RequestParam("description") String description,
     @RequestParam("file") MultipartFile file,
-    @RequestParam("id") String id,
     HttpServletResponse response){
         // String id=pubData.get("id");
         // String nom=pubData.get("nom");
@@ -78,6 +74,7 @@ public class IaController {
              // Transférer le fichier dans l'emplacement de destination
             byte[] imageBytes = file.getBytes();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            String id="ADM1";
             new ServPublication().ajoutPub(nom,description,base64Image,extension,id);
             response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
@@ -86,18 +83,6 @@ public class IaController {
             e.printStackTrace();
         }
     }
-    // @RequestMapping(value = "/deletePub", method = RequestMethod.POST)
-    // @ResponseBody
-    // public void deleteProduct(@RequestBody String id, HttpServletResponse response) {
-    //     try {
-    //         Publication p = new Publication(id);
-    //         p.delete(null);
-    //         response.setStatus(HttpServletResponse.SC_OK);
-    //     } catch (Exception e) {
-    //         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-    //     }
-    // }
-
 
     @GetMapping("/listPub")
     public Vector<Publication> listPub() throws Exception{
