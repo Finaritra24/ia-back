@@ -20,6 +20,10 @@ public class ServPublication {
         Vector<Publication> list=new Publication().find("select*from publication",null);
         return list;
     }
+    public static Vector<Publication> resultRech(String text)throws Exception{
+        Vector<Publication> list=new Publication().find("select*from publication where nom in ('"+text+"') or desc in ('"+text+"')",null);
+        return list;
+    }
     public static void main(String[] args) throws Exception{
         // Vector<Publication> v=listPub();
         // for(Publication p:v){

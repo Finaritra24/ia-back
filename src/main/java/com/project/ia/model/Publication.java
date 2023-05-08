@@ -25,6 +25,9 @@ public class Publication extends DBTable {
         this.imagePub=imagePub;
         this.extimg=extimg;
     }
+    public Publication(String idPublication){
+        this.idPublication = idPublication;
+    }
 
     // Constructeur sans idPublication
     public Publication(String idAdministrateur,String nom, String datepub, String descript,String imagePub,String extimg) {

@@ -8,7 +8,10 @@ import java.util.Map;
 import java.util.Vector;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestParam;
-// import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -81,6 +84,19 @@ public class IaController {
             // TODO Auto-generated catch block
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             e.printStackTrace();
+        }
+    }
+    @RequestMapping(value = "/deletePub/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public void deleteProduct(@PathVariable("id") String id,HttpServletResponse response) {
+        try {
+            Publication p=new Publication(id);
+            p.delete(null);
+            response.setStatus(HttpServletResponse.SC_OK);
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 
