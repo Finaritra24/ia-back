@@ -86,19 +86,18 @@ public class IaController {
             e.printStackTrace();
         }
     }
-    @RequestMapping(value = "/deletePub", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deletePub", method = RequestMethod.POST)
     @ResponseBody
-    public void deleteProduct(@PathVariable("id") String id,HttpServletResponse response) {
+    public void deleteProduct(@RequestBody String id, HttpServletResponse response) {
         try {
-            Publication p=new Publication(id);
+            Publication p = new Publication(id);
             p.delete(null);
             response.setStatus(HttpServletResponse.SC_OK);
-            
         } catch (Exception e) {
-            // TODO: handle exception
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
+
 
     @GetMapping("/listPub")
     public Vector<Publication> listPub() throws Exception{
