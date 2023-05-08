@@ -23,7 +23,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class IaController {
 
 
@@ -34,7 +34,7 @@ public class IaController {
         Vector<Administrateur> list=new ServAdmin().listAdmin();
         return list;
     }
-    @CrossOrigin(origins = "*")
+    @CrossOrigin
     @PostMapping("/loginAdmin")
     public String testLogin(@RequestBody Map<String, String> loginData, HttpServletResponse response) throws Exception{
         String identification = loginData.get("identification");
