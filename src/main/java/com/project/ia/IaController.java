@@ -23,7 +23,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
+@CrossOrigin()
 public class IaController {
 
 
